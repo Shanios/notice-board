@@ -1,0 +1,85 @@
+import { prisma } from "../../../lib/prisma";
+
+export default async function handler(req, res) {
+  if (req.method === "GET") {
+    try {
+      const notices = await prisma.notice.findMany({
+        orderBy: [
+          { priority: "asc" },
+          { publishDate: "desc" },
+        ],
+      });
+
+      return res.status(200).json(notices);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        message: "Failed to fetch notices",
+      });
+    }
+  }
+
+  if (req.method === "POST") {
+    try {
+      const {
+        title,
+        body,
+        category,
+        priority,
+        publishDate,
+        image,
+      } = req.body;
+
+  if (!title?.trim()) {
+  return res.status(400).json({
+    message: "Title is required",
+  });
+}
+
+if (!body?.trim()) {
+  return res.status(400).json({
+    message: "Description is required",
+  });
+}
+
+if (!publishDate || isNaN(Date.parse(publishDate))) {
+  return res.status(400).json({
+    message: "Invalid publish date",
+  });
+}
+
+if (!["Exam", "Event", "General"].includes(category)) {
+  return res.status(400).json({
+    message: "Invalid category",
+  });
+}
+
+if (!["Urgent", "Normal"].includes(priority)) {
+  return res.status(400).json({
+    message: "Invalid priority",
+  });
+}
+      const notice = await prisma.notice.create({
+        data: {
+          title,
+          body,
+          category,
+          priority,
+          publishDate: new Date(publishDate),
+          image,
+        },
+      });
+
+      return res.status(201).json(notice);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        message: "Unable to create notice",
+      });
+    }
+  }
+
+  return res.status(405).json({
+    message: "Method Not Allowed",
+  });
+}
