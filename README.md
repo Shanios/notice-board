@@ -1,19 +1,18 @@
 # 📌 Notice Board
 
-A responsive Notice Board web application built with **Next.js (Pages Router)**, **Prisma ORM**, and **TiDB Cloud (MySQL compatible)**.
-
-The application allows users to create, view, edit, and delete notices with persistent storage in a hosted database.
+A full-stack Notice Board application built using **Next.js (Pages Router)**, **Prisma ORM**, and **TiDB Cloud**. The application allows users to create, view, search, edit, and delete notices through a responsive interface with persistent cloud database storage.
 
 ---
 
-## 🚀 Live Demo
+# 🚀 Live Demo
 
-**Vercel:**  
+**Vercel**
+
 https://notice-board-lilac.vercel.app/
 
 ---
 
-## 📂 GitHub Repository
+# 💻 GitHub Repository
 
 https://github.com/Shanios/notice-board
 
@@ -21,39 +20,40 @@ https://github.com/Shanios/notice-board
 
 # ✨ Features
 
-- ✅ Create Notice
-- ✅ View all Notices
-- ✅ Edit existing Notice
-- ✅ Delete Notice with confirmation
-- ✅ Responsive card layout
-- ✅ Urgent priority badge
-- ✅ Server-side validation
-- ✅ Persistent hosted database using TiDB Cloud
-- ✅ RESTful API using Next.js API Routes
-- ✅ Prisma ORM integration
+- Create new notices
+- View all notices
+- Edit existing notices
+- Delete notices with confirmation
+- Search notices by title
+- Responsive dashboard for desktop and mobile
+- Urgent priority badge
+- Server-side input validation
+- RESTful API using Next.js API Routes
+- Persistent cloud database using TiDB Cloud
+- Clean modern UI built with Tailwind CSS
 
 ---
 
 # 🛠 Tech Stack
 
-### Frontend
+## Frontend
 
 - Next.js 15 (Pages Router)
 - React 19
 - Tailwind CSS
+- Lucide React
 - SweetAlert2
-- Lucide React Icons
 
-### Backend
+## Backend
 
 - Next.js API Routes
 - Prisma ORM
 
-### Database
+## Database
 
 - TiDB Cloud (MySQL Compatible)
 
-### Deployment
+## Deployment
 
 - Vercel
 
@@ -62,26 +62,27 @@ https://github.com/Shanios/notice-board
 # 📁 Project Structure
 
 ```
-notice-board/
+notice-board
 │
-├── components/
+├── components
+│   ├── Layout.js
 │   ├── NoticeCard.js
 │   └── NoticeForm.js
 │
-├── lib/
+├── lib
 │   └── prisma.js
 │
-├── pages/
-│   ├── api/
-│   │   └── notices/
+├── pages
+│   ├── api
+│   │   └── notices
 │   ├── add.js
-│   ├── edit/
+│   ├── edit
 │   └── index.js
 │
-├── prisma/
+├── prisma
 │   └── schema.prisma
 │
-├── styles/
+├── styles
 │
 └── README.md
 ```
@@ -96,7 +97,7 @@ Clone the repository
 git clone https://github.com/Shanios/notice-board.git
 ```
 
-Go to the project
+Move into the project
 
 ```bash
 cd notice-board
@@ -108,13 +109,13 @@ Install dependencies
 npm install
 ```
 
-Generate Prisma Client
+Generate the Prisma Client
 
 ```bash
 npx prisma generate
 ```
 
-Run the development server
+Start the development server
 
 ```bash
 npm run dev
@@ -133,17 +134,17 @@ http://localhost:3000
 Create a `.env` file in the project root.
 
 ```env
-DATABASE_URL="YOUR_DATABASE_CONNECTION_STRING"
+DATABASE_URL="your_database_connection_string"
 ```
 
 ---
 
-# 📖 API Endpoints
+# 📡 API Endpoints
 
 | Method | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/api/notices` | Fetch all notices |
-| POST | `/api/notices` | Create a notice |
+| GET | `/api/notices` | Get all notices (supports title search using `?search=`) |
+| POST | `/api/notices` | Create a new notice |
 | PUT | `/api/notices/:id` | Update a notice |
 | DELETE | `/api/notices/:id` | Delete a notice |
 
@@ -151,15 +152,15 @@ DATABASE_URL="YOUR_DATABASE_CONNECTION_STRING"
 
 # 🗄 Database
 
-The project uses **Prisma ORM** with **TiDB Cloud**.
+The application uses **Prisma ORM** with **TiDB Cloud**.
 
-Data is persisted remotely and remains available after refreshes and redeployments.
+All notices are stored in the hosted database and remain available after refreshes and redeployments.
 
 ---
 
 # 📱 Responsive Design
 
-The application is responsive and supports:
+The interface is responsive and optimized for:
 
 - Desktop
 - Tablet
@@ -167,14 +168,22 @@ The application is responsive and supports:
 
 ---
 
-# 🔮 Future Improvements
+# 🔍 Search
 
-Given more time, I would implement:
+Search is implemented on the **server side**.
 
-- Image upload using Cloudinary instead of image URLs
-- Search and filtering by category and title
-- Pagination for large datasets
-- User authentication and authorization
+Users can search notices by title. The frontend sends the search term to the API, and Prisma filters the results directly from the database before returning them to the client.
+
+---
+
+# 🚀 Future Improvements
+
+If given more time, I would add:
+
+- Image upload using Cloudinary
+- Pagination
+- Category and priority filters
+- Authentication and authorization
 - Rich text editor for notice descriptions
 - Unit and integration tests
 - Dark mode
@@ -183,18 +192,17 @@ Given more time, I would implement:
 
 # 🤖 AI Usage
 
-AI tools were used as development assistants for:
+AI tools were used as a development assistant to:
 
-- Understanding Prisma and TiDB integration
-- Debugging deployment and build issues
-- Improving UI components and styling
-- Reviewing API structure and project organization
-- Explaining concepts and suggesting best practices
+- Explain concepts related to Next.js, Prisma, and TiDB.
+- Help debug development and deployment issues.
+- Review UI improvements and responsive layouts.
+- Suggest implementation approaches for features such as server-side search and API design.
 
-All implementation decisions, testing, debugging, and final verification were completed manually.
+The application architecture, coding decisions, integration, debugging, testing, deployment, and final verification were completed manually.
 
 ---
 
-# 📜 License
+# 📄 License
 
-This project was developed as part of the **Reno Platforms Web Development Assignment** for educational and evaluation purposes.
+This project was developed as part of the **Reno Platforms Web Development Assignment** for evaluation purposes.
