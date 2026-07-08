@@ -1,40 +1,200 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 📌 Notice Board
 
-## Getting Started
+A responsive Notice Board web application built with **Next.js (Pages Router)**, **Prisma ORM**, and **TiDB Cloud (MySQL compatible)**.
 
-First, run the development server:
+The application allows users to create, view, edit, and delete notices with persistent storage in a hosted database.
+
+---
+
+## 🚀 Live Demo
+
+**Vercel:**  
+https://notice-board-lilac.vercel.app/
+
+---
+
+## 📂 GitHub Repository
+
+https://github.com/Shanios/notice-board
+
+---
+
+# ✨ Features
+
+- ✅ Create Notice
+- ✅ View all Notices
+- ✅ Edit existing Notice
+- ✅ Delete Notice with confirmation
+- ✅ Responsive card layout
+- ✅ Urgent priority badge
+- ✅ Server-side validation
+- ✅ Persistent hosted database using TiDB Cloud
+- ✅ RESTful API using Next.js API Routes
+- ✅ Prisma ORM integration
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- Next.js 15 (Pages Router)
+- React 19
+- Tailwind CSS
+- SweetAlert2
+- Lucide React Icons
+
+### Backend
+
+- Next.js API Routes
+- Prisma ORM
+
+### Database
+
+- TiDB Cloud (MySQL Compatible)
+
+### Deployment
+
+- Vercel
+
+---
+
+# 📁 Project Structure
+
+```
+notice-board/
+│
+├── components/
+│   ├── NoticeCard.js
+│   └── NoticeForm.js
+│
+├── lib/
+│   └── prisma.js
+│
+├── pages/
+│   ├── api/
+│   │   └── notices/
+│   ├── add.js
+│   ├── edit/
+│   └── index.js
+│
+├── prisma/
+│   └── schema.prisma
+│
+├── styles/
+│
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/Shanios/notice-board.git
+```
+
+Go to the project
+
+```bash
+cd notice-board
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+# 🔐 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file in the project root.
 
-## Learn More
+```env
+DATABASE_URL="YOUR_DATABASE_CONNECTION_STRING"
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+# 📖 API Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/notices` | Fetch all notices |
+| POST | `/api/notices` | Create a notice |
+| PUT | `/api/notices/:id` | Update a notice |
+| DELETE | `/api/notices/:id` | Delete a notice |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 🗄 Database
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+The project uses **Prisma ORM** with **TiDB Cloud**.
+
+Data is persisted remotely and remains available after refreshes and redeployments.
+
+---
+
+# 📱 Responsive Design
+
+The application is responsive and supports:
+
+- Desktop
+- Tablet
+- Mobile
+
+---
+
+# 🔮 Future Improvements
+
+Given more time, I would implement:
+
+- Image upload using Cloudinary instead of image URLs
+- Search and filtering by category and title
+- Pagination for large datasets
+- User authentication and authorization
+- Rich text editor for notice descriptions
+- Unit and integration tests
+- Dark mode
+
+---
+
+# 🤖 AI Usage
+
+AI tools were used as development assistants for:
+
+- Understanding Prisma and TiDB integration
+- Debugging deployment and build issues
+- Improving UI components and styling
+- Reviewing API structure and project organization
+- Explaining concepts and suggesting best practices
+
+All implementation decisions, testing, debugging, and final verification were completed manually.
+
+---
+
+# 📜 License
+
+This project was developed as part of the **Reno Platforms Web Development Assignment** for educational and evaluation purposes.
