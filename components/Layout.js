@@ -31,13 +31,7 @@ export default function Layout({ children }) {
 
           </div>
 
-          <Link
-            href="/add"
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition text-white px-5 py-3 rounded-xl shadow-lg"
-          >
-            <Plus size={20} />
-            Add Notice
-          </Link>
+
 
         </div>
 

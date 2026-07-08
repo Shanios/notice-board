@@ -1,23 +1,32 @@
 import { prisma } from "../../../lib/prisma";
 
 export default async function handler(req, res) {
-  if (req.method === "GET") {
-    try {
-      const notices = await prisma.notice.findMany({
-        orderBy: [
-          { priority: "asc" },
-          { publishDate: "desc" },
-        ],
-      });
+if (req.method === "GET") {
+  try {
+    const { search = "" } = req.query;
 
-      return res.status(200).json(notices);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({
-        message: "Failed to fetch notices",
-      });
-    }
+    const notices = await prisma.notice.findMany({
+      where: search
+        ? {
+            title: {
+              contains: search,
+            },
+          }
+        : {},
+      orderBy: [
+        { priority: "asc" },
+        { publishDate: "desc" },
+      ],
+    });
+
+    return res.status(200).json(notices);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: "Failed to fetch notices",
+    });
   }
+}
 
   if (req.method === "POST") {
     try {
